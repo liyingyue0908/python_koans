@@ -23,7 +23,7 @@ class AboutTuples(Koan):
 
     def test_tuples_are_immutable_so_appending_is_not_possible(self):
         count_of_three =  (1, 2, 5)
-        with self.assertRaises(TypeError): count_of_three.append("boom")
+        with self.assertRaises(AttributeError): count_of_three.append("boom")
 
         # Tuples are less flexible than lists, but faster.
 
@@ -43,11 +43,11 @@ class AboutTuples(Koan):
         self.assertEqual(str, ("Not a tuple").__class__)
 
     def test_tuple_constructor_can_be_surprising(self):
-        self.assertEqual(("Surprise!",), tuple("Surprise!"))
+        self.assertEqual(('S', 'u', 'r', 'p', 'r', 'i', 's', 'e', '!'), tuple("Surprise!"))
 
     def test_creating_empty_tuples(self):
-        self.assertEqual(tuple , ())
-        self.assertEqual(tuple , tuple()) #Sometimes less confusing
+        self.assertEqual(tuple , ().__class__)
+        self.assertEqual(tuple , tuple().__class__) #Sometimes less confusing
 
     def test_tuples_can_be_embedded(self):
         lat = (37, 14, 6, 'N')
