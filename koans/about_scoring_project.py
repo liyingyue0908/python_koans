@@ -34,6 +34,24 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
+    if len(dice) > 5 or len(dice) < 1:
+        return 0
+    sum = 0
+    for i in range(1, 7):
+        cur_num = dice.count(i)
+        if cur_num >= 3:
+            if i == 1:
+                sum += 1000+(cur_num-3)*100
+            elif i == 5:
+                sum += 500+(cur_num-3)*50
+            else:
+                sum += 100*i
+        else:
+            if i == 1:
+                sum += 100*cur_num
+            elif i == 5:
+                sum += 50* cur_num
+    return sum
     pass
 
 class AboutScoringProject(Koan):
